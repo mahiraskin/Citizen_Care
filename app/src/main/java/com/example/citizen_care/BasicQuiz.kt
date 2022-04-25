@@ -1,16 +1,18 @@
 package com.example.citizen_care
 
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import java.io.File
-import java.util.concurrent.TimeUnit
+import java.io.IOException
+import java.io.InputStream
 
 
 class BasicQuiz : AppCompatActivity() {
-
+    private lateinit var qfl : String
+    private lateinit var ofl : String
+    private lateinit var cfl : String
+    private lateinit var myInputStream: InputStream
     override fun onCreate(savedInstanceState: Bundle?) {
         //lateinit answers
         super.onCreate(savedInstanceState)
@@ -20,24 +22,42 @@ class BasicQuiz : AppCompatActivity() {
         val op1 = findViewById<RadioButton>(R.id.op1)
         val op2 = findViewById<RadioButton>(R.id.op2)
         val options = arrayOf("a","b","c","d")
-        newQuestion("ti",1,questionText, op1, op2, options)
-        newQuestion("it",2,questionText, op1, op2, options)
-        /*
+
+        qfl = getText("Questions.txt")
+        ofl = getText("Options.txt")
+        cfl = getText("Corrects.txt")
+
         val test = Quiz()
-        test.fillQuiz()
+        test.fillQuestions(qfl)
+        test.fillOptions(ofl)
+        test.fillCorrects(cfl)
+
         var a = 0
         test.getQuestions().forEach {
-            newQuestion(it,a++,questionText)
+            newQuestion(it,a++,op1, op2, questionText, test.getOptions())
         }
-         */
     }
+
+    private fun getText(fileName: String) : String {
+        try {
+            myInputStream = assets.open(fileName)
+            val size: Int = myInputStream.available()
+            val buffer = ByteArray(size)
+            myInputStream.read(buffer)
+            return String(buffer)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return "oops"
+    }
+
     //just send the quiz instead
-    private fun newQuestion(question: String, number: Int, questionText: TextView, op1: RadioButton, op2: RadioButton, options: Array<String>) : Boolean {
+    private fun newQuestion(question: String, number: Int, op1: RadioButton, op2: RadioButton, questionText: TextView, options: MutableList<String>) : Boolean {
         var right: Boolean = false
         var clicked: Boolean = false
         questionText.text = "$number - $question"
-        op1.text = options[(number * 2) - 2]
-        op2.text = options[(number * 2) - 1]
+        op1.text = options[(number * 2) - 2].toString()
+        op2.text = options[(number * 2) - 1].toString()
         /*
         do while?
 
@@ -47,15 +67,15 @@ class BasicQuiz : AppCompatActivity() {
             clicked = true
         }
          */
-            op1.setOnClickListener {
-                right = true
-                clicked = true
-            }
+        op1.setOnClickListener {
+            right = true
+            clicked = true
+        }
 
-            op2.setOnClickListener {
-                right = true
-                clicked = true
-            }
+        op2.setOnClickListener {
+            right = true
+            clicked = true
+        }
 
         return right
     }
@@ -65,20 +85,27 @@ class Quiz() {
     private val questions : MutableList<String> = mutableListOf<String>()
     private val corrects : MutableList<String> = mutableListOf<String>()
     private val options : MutableList<String> = mutableListOf<String>()
-    public fun fillQuiz() {
-        var lines:List<String> = File("Questions.txt").readLines()
-        lines.forEach{ line -> questions.add(line)}
 
-        File("Corrects.txt").readLines().forEach {
-            corrects.add(it)
-        }
-        File("Options.txt").readLines().forEach {
-            options.add(it)
-        }
+    public fun fillQuestions(qString: String) = qString.lines().forEach {
+        questions.add(it)
+    }
+    public fun fillCorrects(cString: String) = cString.lines().forEach {
+        corrects.add(it)
+    }
+    public fun fillOptions(oString: String) = oString.lines().forEach {
+        options.add(it)
     }
 
     public fun getQuestions() : MutableList<String>{
         return questions
+    }
+
+    public fun getCorrects() : MutableList<String>{
+        return corrects
+    }
+
+    public fun getOptions() : MutableList<String>{
+        return options
     }
 }
 
