@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Citizen_Care">
         <activity android:name=".BasicQuiz"></activity>
+        <activity android:name=".Rads"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

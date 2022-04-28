@@ -31,11 +31,21 @@ class BasicQuiz : AppCompatActivity() {
         test.fillQuestions(qfl)
         test.fillOptions(ofl)
         test.fillCorrects(cfl)
+        //testing
 
-        var a = 0
+        var a = 1
         test.getQuestions().forEach {
-            newQuestion(it,a++,op1, op2, questionText, test.getOptions())
+            val q = it
+            op1.setOnClickListener {
+                newQuestion(q,a++,op1, op2, questionText, test.getOptions())
+            }
+
+            op2.setOnClickListener {
+                newQuestion(q,a++,op1, op2, questionText, test.getOptions())
+            }
         }
+
+
     }
 
     private fun getText(fileName: String) : String {
@@ -52,32 +62,12 @@ class BasicQuiz : AppCompatActivity() {
     }
 
     //just send the quiz instead
-    private fun newQuestion(question: String, number: Int, op1: RadioButton, op2: RadioButton, questionText: TextView, options: MutableList<String>) : Boolean {
-        var right: Boolean = false
-        var clicked: Boolean = false
+    private fun newQuestion(question: String, number: Int, op1: RadioButton, op2: RadioButton, questionText: TextView, options: MutableList<String>) {
+        op1.isChecked = false
+        op2.isChecked = false
         questionText.text = "$number - $question"
         op1.text = options[(number * 2) - 2].toString()
         op2.text = options[(number * 2) - 1].toString()
-        /*
-        do while?
-
-        op1.setOnClickListener{
-            if (quiz.corrects[number].equals(op1.text))
-                right = true
-            clicked = true
-        }
-         */
-        op1.setOnClickListener {
-            right = true
-            clicked = true
-        }
-
-        op2.setOnClickListener {
-            right = true
-            clicked = true
-        }
-
-        return right
     }
 }
 

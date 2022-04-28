@@ -16,5 +16,13 @@ class Rads : AppCompatActivity() {
         val row3 = arrayOf(binding.button20, binding.button21, binding.button22, binding.button23)
         val row4 = arrayOf(binding.button30, binding.button31, binding.button32, binding.button33)
         val buttArray = arrayOf(row1, row2, row3, row4)
+
+        buttArray.forEach {
+            it.forEach { button ->
+                button.setOnClickListener{
+                    //change color
+                }
+            }
+        }
     }
 }

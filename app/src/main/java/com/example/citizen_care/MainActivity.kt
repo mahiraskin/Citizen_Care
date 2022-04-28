@@ -10,11 +10,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val dialog = LoginFragment()
+        dialog.show(supportFragmentManager,"loginFragment")
+
         val quizButton = findViewById<Button>(R.id.button)
         quizButton.text = "Basic Quiz"
         quizButton.setOnClickListener{
-            val Intent = Intent(this,BasicQuiz::class.java)
-            startActivity(Intent)
+            val intent = Intent(this,BasicQuiz::class.java)
+            startActivity(intent)
+        }
+
+        val radsButton = findViewById<Button>(R.id.button2)
+        radsButton.text = "RADS"
+        radsButton.setOnClickListener{
+            val intent2 = Intent(this,Rads::class.java)
+            startActivity(intent2)
         }
     }
 }
