@@ -1,11 +1,14 @@
-[figma](https://www.figma.com/file/H5t4Wc1Byj0ziRpQoC4Fsb/Untitled?node-id=0%3A1)
+[figma](https://www.figma.com/file/H5t4Wc1Byj0ziRpQoC4Fsb/Untitled?node-id=1%3A18)
 Login ID: Blob3
 Login Password: 258kl
 
+# Project Description
+> Citizen Care is an app of quizzes, tests and surveys for the citizens of Alpha Complex, a fictional setting in Paranoia. App will consist of 4 types of quizzes and profile page 
 
 
 
 # Partially Implemented Features
+> All texts for quizzes, passwords etc. will be moved on to a Mysql Database
 
 > ## Main Activity
 >> Main activity will include 2 tabs, one as a hub for quizzes, tests and surveys and another page as a profile page
