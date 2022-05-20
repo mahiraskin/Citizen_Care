@@ -7,25 +7,41 @@ import androidx.appcompat.app.AppCompatActivity
 import java.io.IOException
 import java.io.InputStream
 
-
+//open?
 class BasicQuiz : AppCompatActivity() {
+    private lateinit var sfl : String
     private lateinit var qfl : String
     private lateinit var ofl : String
     private lateinit var cfl : String
     private lateinit var myInputStream: InputStream
     override fun onCreate(savedInstanceState: Bundle?) {
-        //lateinit answers
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_basic_quiz)
+
+        val number = (0..3).random()
+        if(number == 1) {
+            sfl = getText("Stories.txt")
+            qfl = getText("Questions.txt")
+            ofl = getText("Options.txt")
+            cfl = getText("Corrects.txt")
+
+            val dialog = Context.newInstance(sfl)
+            dialog.show(supportFragmentManager, "Context")
+
+        }
+        else {
+            qfl = getText("Questions.txt")
+            ofl = getText("Options.txt")
+            cfl = getText("Corrects.txt")
+            sfl = getText("Stories.txt")
+        }
 
         val questionText = findViewById<TextView>(R.id.curQuestion)
         val op1 = findViewById<RadioButton>(R.id.op1)
         val op2 = findViewById<RadioButton>(R.id.op2)
         val options = arrayOf("a","b","c","d")
 
-        qfl = getText("Questions.txt")
-        ofl = getText("Options.txt")
-        cfl = getText("Corrects.txt")
 
         val test = Quiz()
         test.fillQuestions(qfl)
@@ -35,7 +51,7 @@ class BasicQuiz : AppCompatActivity() {
 
         var a = 1
         test.getQuestions().forEach {
-            val q = it
+            var q = it
             op1.setOnClickListener {
                 newQuestion(q,a++,op1, op2, questionText, test.getOptions())
             }
@@ -71,7 +87,7 @@ class BasicQuiz : AppCompatActivity() {
     }
 }
 
-class Quiz() {
+class Quiz {
     private val questions : MutableList<String> = mutableListOf<String>()
     private val corrects : MutableList<String> = mutableListOf<String>()
     private val options : MutableList<String> = mutableListOf<String>()
