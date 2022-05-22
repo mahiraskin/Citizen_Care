@@ -44,11 +44,11 @@ class Context() : DialogFragment() {
         val rootView: View = inflater.inflate(R.layout.fragment_context, container, false)
         rootView.findViewById<TextView>(R.id.textView)?.text = "Press The Button"
         rootView.findViewById<Button>(R.id.button3).setOnClickListener{
-            if(index == storyText.size) {
+            if(index == storyText.size - 1) {
                 dismiss()
             }
             rootView.findViewById<TextView>(R.id.textView)?.text = storyText[index].toString()
-            if(index == storyText.size - 1) {
+            if(index == storyText.size - 2) {
                 it.findViewById<Button>(R.id.button3).text = "Finish"
             }
             index++

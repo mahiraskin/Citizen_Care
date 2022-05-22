@@ -5,17 +5,20 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.RatingBar
 import android.widget.TextView
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import java.io.IOException
 import java.io.InputStream
 
 class Survey : AppCompatActivity() {
     private lateinit var myInputStream: InputStream
-    private val ratings : MutableList<Int> = mutableListOf<Int>()
+    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_survey)
 
+        database = FirebaseDatabase.getInstance("https://citizen-care-default-rtdb.europe-west1.firebasedatabase.app").reference
         val button = findViewById<Button>(R.id.Survbtn)
         val sfl = getText("Stories.txt")
 
@@ -25,22 +28,21 @@ class Survey : AppCompatActivity() {
         }
 
         var index = 0
-
+        findViewById<TextView>(R.id.survQuestion)?.text = survText[index].toString()
+        index++
         button.setOnClickListener{
-            if(index == survText.size) {
-                //add 10 xp points
+            if(index == survText.size-1) {
                 finish()
             }
 
-            if(index == survText.size - 1) {
+            findViewById<TextView>(R.id.survQuestion)?.text = survText[index].toString()
+
+            if(index == survText.size-2) {
                 it.findViewById<Button>(R.id.Survbtn).text = "Finish"
             }
 
-            else {
-                ratings.add(findViewById<RatingBar>(R.id.ratingBar2).rating.toInt())
-            }
+            database.child("Survey").child((index-1).toString()).setValue(((findViewById<RatingBar>(R.id.ratingBar2).rating)*2).toInt())
 
-            findViewById<TextView>(R.id.survQuestion)?.text = survText[index].toString()
             index++
         }
     }
