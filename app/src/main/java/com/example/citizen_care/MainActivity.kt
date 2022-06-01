@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<ViewPager>(R.id.viewPager).adapter = adapter
         findViewById<TabLayout>(R.id.tabs).setupWithViewPager(findViewById<ViewPager>(R.id.viewPager))
 
-        findViewById<TabLayout>(R.id.tabs).getTabAt(1)!!.setIcon(R.drawable.ic_baseline_album_24)
+        findViewById<TabLayout>(R.id.tabs).getTabAt(1)!!.setIcon(R.drawable.ic_baseline_remove_red_eye_24)
         findViewById<TabLayout>(R.id.tabs).getTabAt(0)!!.setIcon(R.drawable.ic_baseline_face_24)
 
     }

@@ -22,6 +22,8 @@ class LoginFragment : DialogFragment() {
         isCancelable = false
         database = FirebaseDatabase.getInstance("https://citizen-care-default-rtdb.europe-west1.firebasedatabase.app").reference
         val rootView: View = inflater.inflate(R.layout.fragment_login, container, false)
+        rootView.findViewById<EditText>(R.id.identification).hint = "ID"
+        rootView.findViewById<EditText>(R.id.password).hint = "PASSWORD"
         lateinit var name: String
         lateinit var password: String
 

@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_red_light"
     tools:context=".Survey">
 
     <TextView
         android:id="@+id/survQuestion"
         android:layout_width="295dp"
         android:layout_height="184dp"
+        android:background="@drawable/rounded_corner"
+        android:gravity="center"
         android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.276" />
@@ -59,6 +61,8 @@
         android:layout_width="113dp"
         android:layout_height="66dp"
         android:text="Button"
+        app:backgroundTint="@android:color/holo_red_dark"
+        android:background="@drawable/rounded_corner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

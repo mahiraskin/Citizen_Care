@@ -1,8 +1,6 @@
 package com.example.citizen_care
 
-import android.R.attr
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -48,7 +46,7 @@ class Rads : AppCompatActivity() {
         buttArray.forEach {
             it.forEach { button ->
                 button.setOnClickListener {
-                    button.setBackgroundColor(Color.GRAY);
+                    button.setBackgroundColor(Color.GRAY)
                     blocks.add(button)
                 }
             }
@@ -59,7 +57,6 @@ class Rads : AppCompatActivity() {
     private fun move(curIndex: Array<Int>, buttArray: Array<Array<Button>>) {
         var x = curIndex[0]
         var y = curIndex[1]
-        var con : Int
         movements.forEach {
             when (it) {
                 "up" -> {
@@ -70,7 +67,7 @@ class Rads : AppCompatActivity() {
                         else if (doors.contains(buttArray[a][y]))
                             getNext(a, y, buttArray)
                         else
-                            buttArray[a][y].setBackgroundColor(Color.BLUE)
+                            buttArray[a][y].setBackgroundColor(Color.GREEN)
                         x--
                     }
                 }
@@ -82,7 +79,7 @@ class Rads : AppCompatActivity() {
                         else if (doors.contains(buttArray[x][a]))
                             getNext(a, y, buttArray)
                         else
-                            buttArray[x][a].setBackgroundColor(Color.BLUE)
+                            buttArray[x][a].setBackgroundColor(Color.GREEN)
                         y++
                     }
                 }
@@ -94,7 +91,7 @@ class Rads : AppCompatActivity() {
                         else if (doors.contains(buttArray[a][y]))
                             getNext(a, y, buttArray)
                         else
-                            buttArray[a][y].setBackgroundColor(Color.BLUE)
+                            buttArray[a][y].setBackgroundColor(Color.GREEN)
                         x++
                     }
                 }
@@ -106,7 +103,7 @@ class Rads : AppCompatActivity() {
                         else if (doors.contains(buttArray[x][a]))
                             getNext(x, a, buttArray)
                         else
-                            buttArray[x][a].setBackgroundColor(Color.BLUE)
+                            buttArray[x][a].setBackgroundColor(Color.GREEN)
                         y--
                     }
                 }
@@ -135,7 +132,7 @@ class Rads : AppCompatActivity() {
                     button.text = it.value.toString().split("|")[0].substring(
                         1, it.value.toString().split("|")[0].length - 1
                     )
-                    button.setBackgroundColor(Color.MAGENTA)
+                    button.setBackgroundColor(Color.BLUE)
                     when {
                         it.value.toString().split("|")[1] == "block" -> {
                             button.setBackgroundColor(Color.GRAY)

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_red_light"
     tools:context=".Rads">
 
     <TableLayout
@@ -28,25 +29,25 @@
                 android:id="@+id/button00"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="1" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button01"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="2" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button02"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="3" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button03"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="4" />
+                tools:ignore="ButtonStyle" />
         </TableRow>
 
         <TableRow
@@ -59,25 +60,25 @@
                 android:id="@+id/button10"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="5" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button11"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="6" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button12"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="7" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button13"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="8" />
+                tools:ignore="ButtonStyle" />
         </TableRow>
 
         <TableRow
@@ -90,25 +91,25 @@
                 android:id="@+id/button20"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="9" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button21"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="7" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button22"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="8" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button23"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="7" />
+                tools:ignore="ButtonStyle" />
         </TableRow>
 
         <TableRow
@@ -121,25 +122,25 @@
                 android:id="@+id/button30"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="9" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button31"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="7" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button32"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="8" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/button33"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:text="7" />
+                tools:ignore="ButtonStyle" />
         </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
